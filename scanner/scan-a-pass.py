@@ -85,7 +85,7 @@ if __name__ == '__main__':
             date = str(datetime.datetime.fromtimestamp(unix).strftime('%Y-%m-%d %H:%M:%S'))
             keyword = 'Python'
             card = sql_name[name_index]
-            crsr.execute("INSERT INTO times (name, time) VALUES (?, ?)", (card, date))
+            crsr.execute("INSERT INTO times2 (name, time) VALUES (?, ?)", (card, date))
             sql.commit()
             #name_query_execution = crsr.execute(name_query)
             #name = ''.join(name_query_execution)
