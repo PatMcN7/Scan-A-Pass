@@ -31,13 +31,13 @@ crsr.execute('SELECT * FROM cards')
 
 cards =  crsr.fetchall()
 
-crsr.execute('SELECT * FROM times')
+
 
 card = ''
 
 #name_query = ('SELECT name FROM cards WHERE card = (?)')
 
-times = crsr.fetchall()
+
 
 print(cards)
 
@@ -85,7 +85,9 @@ if __name__ == '__main__':
             date = str(datetime.datetime.fromtimestamp(unix).strftime('%Y-%m-%d %H:%M:%S'))
             keyword = 'Python'
             card = sql_name[name_index]
-            crsr.execute("INSERT INTO times2 (name, time) VALUES (?, ?)", (card, date))
+            crsr.execute('SELECT in_out FROM times3 WHERE name = (?)', (card,))
+            in_out = crsr.fetchall()
+            crsr.execute("INSERT INTO times3 (name, time, in_out) VALUES (?, ?)", (card, date, in_out))
             sql.commit()
             #name_query_execution = crsr.execute(name_query)
             #name = ''.join(name_query_execution)

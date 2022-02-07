@@ -5,16 +5,16 @@ con = sqlite3.connect('data.db')
 cur = con.cursor()
 cur.execute('SELECT time FROM times WHERE name = "RayP"')
 RayP_time_query = cur.fetchall()
-RayP_time = RayP_time_query[0][0]
+RayP_time = RayP_time_query[len(RayP_time_query) - 1][0]
 cur.execute('SELECT time FROM times WHERE name = "AndrewL"')
 AndrewL_time_query = cur.fetchall()
-AndrewL_time = AndrewL_time_query[0][0]
+AndrewL_time = AndrewL_time_query[len(AndrewL_time_query) - 1][0]
 cur.execute('SELECT time FROM times WHERE name = "PatrickM"')
 PatrickM_time_query = cur.fetchall()
-PatrickM_time = PatrickM_time_query[0][0]
+PatrickM_time = PatrickM_time_query[len(PatrickM_time_query) - 1][0]
 cur.execute('SELECT time FROM times WHERE name = "EricJ"')
 EricJ_time_query = cur.fetchall()
-EricJ_time = EricJ_time_query[0][0]
+EricJ_time = EricJ_time_query[len(EricJ_time_query) - 1][0]
 app = Flask('app')
 
 @app.route('/')
