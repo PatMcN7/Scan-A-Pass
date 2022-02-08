@@ -1,4 +1,5 @@
 #cards tables
+from selectors import EpollSelector
 from gpiozero import PWMLED
 import RPi.GPIO as GPIO
 import sqlite3
@@ -86,8 +87,13 @@ if __name__ == '__main__':
             keyword = 'Python'
             card = sql_name[name_index]
             crsr.execute('SELECT in_out FROM times3 WHERE name = (?)', (card,))
-            in_out = crsr.fetchall()
-            crsr.execute("INSERT INTO times3 (name, time, in_out) VALUES (?, ?)", (card, date, in_out))
+            in_out_fetch = crsr.fetchall()
+            in_out_bool = [len(in_out_fetch) - 1][0]
+            if in_out_bool == 'True':
+                in_out = 'False'
+            else:
+                in_out = 'True'
+            crsr.execute("INSERT INTO times3 (name, time, in_out) VALUES (?, ?, ?)", (card, date, in_out))
             sql.commit()
             #name_query_execution = crsr.execute(name_query)
             #name = ''.join(name_query_execution)
