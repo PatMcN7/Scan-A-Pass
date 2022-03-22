@@ -27,17 +27,12 @@ EricJ_time = EricJ_time_query[len(EricJ_time_query) - 1][0]
 cur.execute('Select in_out FROM times3 WHERE name = "EricJ"')
 EricJ_in_out_query = cur.fetchall()
 EricJ_in_out = EricJ_in_out_query[len(EricJ_in_out_query) - 1][0]
-cur.execute('SELECT time FROM times WHERE name = "PETE&C Attendee"')
-PETE_time_query = cur.fetchall()
-PETE_time = PETE_time_query[len(PETE_time_query) - 1][0]
-cur.execute('Select in_out FROM times3 WHERE name = "PETE&C Attendee"')
-PETE_in_out_query = cur.fetchall()
-PETE_in_out = PETE_in_out_query[len(PETE_in_out_query) - 1][0]
+
 app = Flask('app')
 
-@app.route('/')
+@app.route('/flask/')
 def index():
-  return render_template('index.html', student_1 = 'AndrewL', student_2 = 'RayP', student_3 = 'PatrickM', student_4 = 'EricJ', student_5 = 'PETE%C Attendee', student_1_time = AndrewL_time, student_2_time = RayP_time , student_3_time = PatrickM_time, student_4_time = EricJ_time, student_5_time = PETE_time, student_1_in_out = AndrewL_in_out, student_2_in_out = RayP_in_out, student_3_in_out = PatrickM_in_out, student_4_in_out = EricJ_in_out, student_5_in_out = PETE_in_out)
+  return render_template('index.html', student_1 = 'AndrewL', student_2 = 'RayP', student_3 = 'PatrickM', student_4 = 'EricJ', student_1_time = AndrewL_time, student_2_time = RayP_time , student_3_time = PatrickM_time, student_4_time = EricJ_time,student_1_in_out = AndrewL_in_out, student_2_in_out = RayP_in_out, student_3_in_out = PatrickM_in_out, student_4_in_out = EricJ_in_out)
 
 
 
